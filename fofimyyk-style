@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>fof1myyk | Twitch стрімер</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #0a0c12 0%, #12141c 100%);
+            color: #f0f3fa;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* Головний контейнер */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Hero секція – вітання */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .avatar {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, #9146ff, #3b1f6e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5), 0 0 0 4px rgba(145, 70, 255, 0.3);
+        }
+
+        .avatar i {
+            font-size: 4.5rem;
+            color: white;
+            filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.3));
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, #ffffff, #b89eff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #9146ff22;
+            backdrop-filter: blur(4px);
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid #9146ffaa;
+            margin: 0.75rem 0 1rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #bfc9e6;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Секція з інформацією про канал */
+        .info-card {
+            background: rgba(18, 22, 32, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(145, 70, 255, 0.3);
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease;
+        }
+
+        .info-card:hover {
+            border-color: #9146ffaa;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #9146ff;
+            font-size: 1.8rem;
+        }
+
+        .channel-desc {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #9146ff;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            background: #0b0e16;
+            border-radius: 1.5rem;
+            padding: 0.7rem 1.3rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-item i {
+            color: #ffb347;
+            font-size: 1.2rem;
+        }
+
+        /* Сітка соціальних посилань */
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #1a1e2c;
+            padding: 0.9rem 1.8rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid #2c2f3f;
+            color: #f0f3fa;
+            backdrop-filter: blur(4px);
+        }
+
+        .social-btn i {
+            font-size: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        /* Кольори для кожної платформи при ховері */
+        .social-btn.twitch:hover {
+            background: #9146ff;
+            border-color: #b77cff;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -8px #9146ff80;
+        }
+
+        .social-btn.tiktok:hover {
+            background: #000000;
+            border-color: #25f4ee;
+            box-shadow: 0 12px 20px -8px #25f4ee80;
+        }
+
+        .social-btn.discord:hover {
+            background: #5865f2;
+            border-color: #8a96ff;
+            transform: translateY(-4px);
+        }
+
+        .social-btn.spotify:hover {
+            background: #1db954;
+            border-color: #4ade80;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -8px #1db95480;
+        }
+
+        .social-btn:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #252a3a;
+            color: #7e85a3;
+            font-size: 0.85rem;
+        }
+
+        /* Адаптивність */
+        @media (max-width: 650px) {
+            .container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .links-grid {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .social-btn {
+                justify-content: center;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .stat-item {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Анімація появи */
+        .animate {
+            animation: fadeUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero блок: Twitch стрімер fof1myyk -->
+    <div class="hero animate">
+        <div class="avatar">
+            <i class="fab fa-twitch"></i>
+        </div>
+        <h1>fof1myyk</h1>
+        <div class="badge">
+            <i class="fas fa-gamepad"></i> TWITCH СТРІМЕР
+        </div>
+        <p class="tagline">
+            🔴 LIVE | Геймінг, спілкування та вайб
+        </p>
+    </div>
+
+    <!-- Інформація про канал (опис + цікаві факти) -->
+    <div class="info-card animate delay-1">
+        <div class="section-title">
+            <i class="fab fa-twitch"></i>
+            <span>Про канал fof1myyk</span>
+        </div>
+        <div class="channel-desc">
+            🎮 <strong>fof1myyk</strong> — це енергійний Twitch-стрімер, який об'єднує навколо себе геймерів та позитивних людей.  
+            Тут ти знайдеш: веселі проходження ігор, хайпові моменти, спілкування в чаті та незабутні стріми з вайбом.  
+            Кожен вечір — нові пригоди, меми та живий фан. Підписуйся, щоб не пропустити пуск!
+        </div>
+        <div class="stats">
+            <div class="stat-item"><i class="fas fa-heart"></i> Прямі ефіри щотижня</div>
+            <div class="stat-item"><i class="fas fa-users"></i> Дружня спільнота</div>
+            <div class="stat-item"><i class="fas fa-trophy"></i> Веселі челенджі</div>
+        </div>
+    </div>
+
+    <!-- УСІ ПОСИЛАННЯ: TikTok, Twitch, Discord, Spotify (з твоїми URL) -->
+    <div class="links-grid animate delay-2">
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@fof1myyk_offical" target="_blank" rel="noopener noreferrer" class="social-btn tiktok">
+            <i class="fab fa-tiktok"></i> TikTok
+        </a>
+        <!-- Twitch -->
+        <a href="https://www.twitch.tv/fof1myyk" target="_blank" rel="noopener noreferrer" class="social-btn twitch">
+            <i class="fab fa-twitch"></i> Twitch
+        </a>
+        <!-- Discord -->
+        <a href="https://discord.gg/dR3fhyXfa" target="_blank" rel="noopener noreferrer" class="social-btn discord">
+            <i class="fab fa-discord"></i> Discord
+        </a>
+        <!-- Spotify -->
+        <a href="https://open.spotify.com/user/31lvbdjkwjxbuj72na7nih7fh754?si=29df91c87d0f4593" target="_blank" rel="noopener noreferrer" class="social-btn spotify">
+            <i class="fab fa-spotify"></i> Spotify
+        </a>
+    </div>
+
+    <!-- Додатковий блок з активністю (щоб виглядало ще якісніше) -->
+    <div class="info-card animate delay-3" style="margin-top: 1rem;">
+        <div class="section-title">
+            <i class="fas fa-link"></i>
+            <span>Приєднуйся зараз</span>
+        </div>
+        <p style="margin-bottom: 0.5rem;">
+            Натискай на будь-яку кнопку вище — заходь у стрім, підписуйся в TikTok, залітай у Discord тусовку та слухай улюблені треки в Spotify від fof1myyk.
+        </p>
+        <div style="display: flex; gap: 12px; margin-top: 1rem; flex-wrap: wrap;">
+            <span style="background:#9146ff30; padding: 5px 12px; border-radius: 40px;"><i class="fas fa-bolt"></i> 24/7 вайб</span>
+            <span style="background:#9146ff30; padding: 5px 12px; border-radius: 40px;"><i class="fas fa-comment"></i> активний чат</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <i class="far fa-copyright"></i> fof1myyk · стріми для своїх
+    </div>
+</div>
+
+<!-- невеличкий скрипт для додаткового захисту зовнішніх посилань (без зайвого) -->
+<script>
+    // всі посилання вже мають target="_blank" та rel, просто для стилю
+    console.log("✅ Сайт fof1myyk завантажено | Twitch стрімер");
+</script>
+</body>
+</html>
